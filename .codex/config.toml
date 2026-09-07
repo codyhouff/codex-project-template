@@ -1,0 +1,10 @@
+# Project-local Codex configuration.
+# Keep this file intentionally small. Prefer repository behavior rules in AGENTS.md.
+#
+# Model routing is documented in docs/CODEX_WORKFLOW.md instead of hard-coded here,
+# because the best model/effort can vary by task and Codex release.
+#
+# Codex's default combined project-instruction budget is 32 KiB. The root AGENTS.md
+# in this template is intentionally well below that limit, so no override is needed.
+#
+# Add project-specific Codex configuration only when the project demonstrates a need.
