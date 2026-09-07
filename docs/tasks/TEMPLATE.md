@@ -3,6 +3,8 @@
 ## Status
 Planned
 
+Use only: Planned, In progress, Blocked, Completed.
+
 ## Goal
 What user-visible or system behavior should change?
 
@@ -14,8 +16,13 @@ Why is this needed? What is the current behavior?
 - [ ] Criterion 2
 - [ ] Existing behavior that must not regress
 
-## Relevant code / likely files
-- `path/to/file` — why it matters
+## Relevant paths
+
+### Inspected
+- `path/to/file` — what was found and why it matters
+
+### Likely / to inspect
+- `path/to/file` — why it may matter
 
 ## Implementation plan
 1. Step one
@@ -34,4 +41,7 @@ Why is this needed? What is the current behavior?
 - TBD
 
 ## Completion notes
-<!-- Fill after implementation only when useful. Keep concise. -->
+<!-- Fill when the task is Completed. Include:
+- verification commands actually run and their outcomes;
+- remaining risks or follow-ups.
+Keep concise. -->

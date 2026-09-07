@@ -8,15 +8,12 @@
 
 ## Verification
 
-- [ ] Targeted tests/checks run
-- [ ] Typecheck/lint run when applicable
-- [ ] Broader integration/E2E checks run when justified
-- [ ] No unrelated changes in the diff
-
-### Commands / results
+Record commands actually run and their outcomes. Use `Not run — <reason>` when appropriate.
 
 ```text
-<commands and concise results>
+<command> — passed
+<command> — failed: <concise result>
+Not run — <reason>
 ```
 
 ## Risks / follow-ups

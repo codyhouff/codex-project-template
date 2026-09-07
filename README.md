@@ -1,49 +1,75 @@
 # Codex Project Template
 
-A lightweight repository template for high-throughput Codex development.
+A lightweight, reusable repository template for Codex-first development.
 
-The goal is simple: make the repository easy for coding agents to understand, give planned work a clear handoff format, and make verification explicit without adding a heavy orchestration framework.
+It provides concise agent guidance, durable project context, task handoffs, and explicit verification without adding a framework.
 
-## Recommended workflow
+## Model routing
 
-| Approx. share | Model | Best use |
-| ---: | --- | --- |
-| 45% | GPT-5.6 Luna Max | Planned, well-specified implementation / bulk execution |
-| 30% | GPT-5.6 Terra High | Ambiguous, exploratory, interactive development |
-| 10% | GPT-5.6 Sol High | Planning, architecture, difficult reasoning, strong review |
-| 8% | GPT-5.6 Luna High | Tests, lint/type fixes, routine bugs, mechanical cleanup |
-| 5% | GPT-5.6 Terra Max | Hard implementation / escalation |
-| 2% | GPT-6 Astra Max | Rare rescue / frontier escalation |
+These are human routing defaults, not automatic Codex configuration. Each label combines a model with a reasoning effort; for example, **Luna Max** means GPT-5.6 Luna with Max reasoning. Availability can vary by account and client.
 
-Treat these percentages as routing defaults, not quotas. Route by task shape first.
+Treat the percentages as starting targets, not quotas. When unsure, use **Terra High**. Switch to **Luna Max** when the plan, acceptance criteria, relevant paths, and verification commands are clear. Luna Max favors cost/quota throughput on well-specified work but can use more tokens, steps, and time; Terra High favors interactive iteration.
+
+1. **Plan - ~10%: Sol High**
+   Define the architecture, relevant paths, implementation steps, edge cases, and acceptance criteria.
+2. **Implement - ~75% total**
+   - **Luna Max - ~45%:** Execute a clear, well-specified plan.
+   - **Terra High - ~30%:** Explore the repository and adapt while handling ambiguity or changing requirements.
+3. **Test / clean up - ~8%: Luna High**
+   The implementing model remains responsible for running relevant verification. Use Luna High for an optional mechanical cleanup pass: tests, lint, type errors, and straightforward bugs.
+4. **Hard implementation - ~5%: Terra Max**
+   Escalate when the normal implementation routes are not producing a correct result.
+5. **Extreme / stuck - ~2%: Astra Max**
+   Reserve for genuinely difficult failures.
+
+### Daily drivers
+
+About 75% of coding should use two routes:
+
+- **Luna Max - ~45%:** planned execution.
+- **Terra High - ~30%:** the default selection for interactive or ambiguous work.
+
+If you remember only three routes:
+
+- **Sol High:** think.
+- **Luna Max:** build.
+- **Terra High:** explore and interact.
 
 ## Start a project
 
-1. Create a repository from this template.
-2. Replace the placeholders in `docs/PRODUCT.md` and `docs/ARCHITECTURE.md`.
-3. Configure `scripts/verify.sh` for the project's real commands.
-4. Update the repository map and commands in `AGENTS.md`.
-5. For non-trivial work, create a task from `docs/tasks/TEMPLATE.md`.
-6. Use the task spec as the handoff to the implementation model.
-7. Move finished task files from `docs/tasks/active/` to `docs/tasks/completed/` when useful.
+A repository created from this template is not implementation-ready until project-specific setup is complete.
 
-## Core idea
+1. Create a repository from this template.
+2. Complete `docs/PRODUCT.md`.
+3. Complete `docs/ARCHITECTURE.md`, including the repository map and system boundaries.
+4. Configure `docs/TESTING.md` with real project verification commands and remove irrelevant placeholders.
+5. Review and update `docs/CURRENT_STATE.md`.
+6. For non-trivial work, create a task from `docs/tasks/TEMPLATE.md` and place it in `docs/tasks/active/` when useful.
+7. Use the task spec as the implementation handoff. When completed, set its status to `Completed` and move it to `docs/tasks/completed/`.
+8. Add project-specific CI only after real verification commands exist.
+
+## Repository structure
 
 ```text
-Sol High plans
-    ↓
-docs/tasks/active/<task>.md
-    ↓
-Luna Max implements clear plans
-Terra High handles ambiguity / exploration
-    ↓
-Luna High verifies / cleans up
-    ↓
-Terra Max / Astra escalate only when needed
+codex-project-template/
+|-- AGENTS.md                         durable agent rules and workflow
+|-- README.md                         template purpose and bootstrap
+|-- .gitignore                        common local files and secrets
+|-- .github/
+|   `-- PULL_REQUEST_TEMPLATE.md      PR context and verification evidence
+`-- docs/
+    |-- PRODUCT.md                    product scope and outcomes
+    |-- ARCHITECTURE.md               system boundaries and repository map
+    |-- TESTING.md                    project verification commands and strategy
+    |-- CURRENT_STATE.md              current limitations and temporary facts
+    |-- decisions/
+    |   `-- TEMPLATE.md               optional architecture decision template
+    `-- tasks/
+        |-- TEMPLATE.md               task handoff template
+        |-- active/
+        |   `-- .gitkeep              keeps the active task directory in Git
+        `-- completed/
+            `-- .gitkeep              keeps the completed task directory in Git
 ```
 
-## Why this stays small
-
-Codex automatically discovers `AGENTS.md` from the repository root down toward the working directory. Keep the root file concise and put durable detail in `docs/`. Add nested `AGENTS.md` files only when a subdirectory genuinely needs different rules.
-
-This repository deliberately avoids a large agent framework, automatic model routing, and dozens of custom roles. Add those only when they solve a demonstrated problem.
+Keep `AGENTS.md` concise and put durable project detail in `docs/`. Add nested agent instructions only when a subtree genuinely needs different rules.

@@ -6,14 +6,9 @@
 TBD.
 
 ## Repository map
-<!-- Replace this example with the real top-level structure. -->
+<!-- Replace this placeholder with the real top-level structure after project initialization. -->
 
-```text
-src/        application code
-tests/      automated tests
-docs/       durable project and task context
-scripts/    developer / verification commands
-```
+TBD.
 
 ## Major components
 | Component | Responsibility | Key paths |

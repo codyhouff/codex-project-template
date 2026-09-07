@@ -4,7 +4,7 @@
 Use the narrowest verification that gives adequate confidence for the risk of the change. Escalate from targeted checks to broad suites only when necessary.
 
 ## Commands
-<!-- Replace these placeholders with real commands as soon as the tech stack is initialized. -->
+<!-- Replace these placeholders with real commands as soon as the tech stack is initialized. Remove rows that do not apply. -->
 
 | Check | Command | When to run |
 | --- | --- | --- |
@@ -14,7 +14,8 @@ Use the narrowest verification that gives adequate confidence for the risk of th
 | Lint | TBD | Normal code changes |
 | Integration | TBD | Cross-component behavior |
 | E2E | TBD | High-risk user flows |
-| Repository verify | `./scripts/verify.sh` | Final verification once configured |
+
+Treat this file as the single source of truth for project verification commands. Until the commands are configured, or when a check was not run, report verification as unverified.
 
 ## Verification ladder
 1. Reproduce or understand the target behavior.
