@@ -24,6 +24,11 @@ Why is this needed? What is the current behavior?
 ### Likely / to inspect
 - `path/to/file` — why it may matter
 
+## Delegation (optional)
+Delete this section or mark it not needed for single-agent work. For independent workstreams, record each owner, owned paths, and dependencies.
+
+- `workstream` — owner: `agent`; paths: `path/to/file`; depends on: `none`
+
 ## Implementation plan
 1. Step one
 2. Step two
